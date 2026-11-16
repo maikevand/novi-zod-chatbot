@@ -36,7 +36,7 @@ export default function VacatureKaart({ vacature, onSluiten }: VacatureKaartProp
                 <dd>{vacature.vaardigheden.length > 0 ? vacature.vaardigheden.join(', ') : 'Geen'}</dd>
 
                 <dt className="font-semibold">Thuiswerken</dt>
-                <dd>{vacature.remote ? 'Ja' : 'Nee'}</dd>
+                <dd>{vacature.remote === null ? 'Niet vermeld' : vacature.remote ? 'Ja' : 'Nee'}</dd>
             </dl>
         </div>
     );

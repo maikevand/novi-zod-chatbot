@@ -5,6 +5,12 @@
 3. Ik heb diverse schema's op nullable gezet, omdat ik denk dat het beter is om toe te staan dat een waarde null mag worden, dan dat er verplicht een betekenisvolle waarde ingevuld moet worden. De kans is dan groter dat de AI gaat hallucineren en een niet kloppende waarde invult.
 4. Zodat er geforceerd wordt dat het ervaringsniveau op soortgelijke manier gecategoriseerd wordt. Dit is bv. behulpzaam als je gebruikers vacatures wilt laten filteren op ervaringsniveau. Met z.string() zou je bv. ook afwijkende waarden kunnen krijgen zoals "beginner". 
 
+### 2. Bouw de extractiefunctionaliteit
+1. Omdat je de tekst pas wil weergeven als alle informatie is doorlopen en de juiste informatie is opgesteld o.b.v. de gevraagde structuur.
+2. .describe legt het model uit waar een bepaald onderdeel van het schema voor staat/wat dit inhoudt en maakt dit specifieker (bv. dat het het minimale salaris in euros betreft).
+3. Omdat je de API-key niet vrij wil geven via de client component.
+4. Een knop in de chat. De gebruiker kan hiermee op dezelfde plek chatten en vacatureteksten analyseren (en ik hoef geen tweede pagina te bouwen). 
+
 ## Opdrachtbeschrijving
 
 Tot nu toe liet je het model alleen tekst teruggeven in een chat. In deze opdracht ga je het model gebruiken om vrije tekst om te zetten naar data waar jouw applicatie echt iets mee kan: data met een vaste vorm, die is gecontroleerd en die je kunt opslaan in je database.

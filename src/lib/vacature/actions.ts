@@ -1,6 +1,9 @@
 'use server';
 
 import type { Vacature } from '@/lib/vacature/schema';
+import { vacatureSchema } from '@/lib/vacature/schema';
+import { openai } from '@ai-sdk/openai';
+import { generateText, Output } from 'ai';
 
 export type VacatureResultaat = {
   vacature?: Vacature;
@@ -8,13 +11,20 @@ export type VacatureResultaat = {
 };
 
 export async function extractVacature(tekst: string): Promise<VacatureResultaat> {
-  // TODO: controleer de input: de tekst mag niet leeg zijn en niet langer dan een maximum
-
-  // TODO: roep generateText() aan met openai('gpt-4o-mini'), een instructie, de tekst als prompt en output: Output.object({ schema: vacatureSchema })
-
-  // TODO: geef { vacature: output } terug
-
-  // TODO: vang NoObjectGeneratedError af en geef een begrijpelijke foutmelding terug
-
-  return { error: `Nog niet geïmplementeerd. De server heeft ${tekst.length} tekens ontvangen.` };
+  if (tekst.trim().length === 0) {
+    return { error: "Vul eerst een vacaturetekst in." }
+    } else if (tekst.trim().length > 10000) {
+    return {error: "Er zijn maximaal 10.000 tekens toegestaan."}
+    }
+    try {
+    const result = await generateText({
+      model: openai('gpt-4o-mini'),
+      system: "Je bent een vacatureanalist. Analyseer vacatureteksten en haal de belangrijkste gegevens eruit.",  
+      prompt: `Analyseer de volgende vacaturetekst: ${tekst}`,
+      output: Output.object({ schema: vacatureSchema }),
+    });
+    return { vacature: result.output };
+  } catch (error) {
+    return { error: "Er is een fout opgetreden bij het analyseren van de vacaturetekst." }
+  }
 }
