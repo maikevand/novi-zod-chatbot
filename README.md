@@ -1,3 +1,27 @@
+## Antwoorden op de vragen
+### 1. Kies je onderwerp en ontwerp je schema
+1. Omdat een geldige JSON niet per se hoeft te voldoen aan de structuur die de applicatie verwacht.
+2. TypeScript controleert tijdens het schrijven van de code, Zod controleert als de applicatie draait en er data binnenkomt. 
+3. Ik heb diverse schema's op nullable gezet, omdat ik denk dat het beter is om toe te staan dat een waarde null mag worden, dan dat er verplicht een betekenisvolle waarde ingevuld moet worden. De kans is dan groter dat de AI gaat hallucineren en een niet kloppende waarde invult.
+4. Zodat er geforceerd wordt dat het ervaringsniveau op soortgelijke manier gecategoriseerd wordt. Dit is bv. behulpzaam als je gebruikers vacatures wilt laten filteren op ervaringsniveau. Met z.string() zou je bv. ook afwijkende waarden kunnen krijgen zoals "beginner". 
+
+### 2. Bouw de extractiefunctionaliteit
+1. Omdat je de tekst pas wil weergeven als alle informatie is doorlopen en de juiste informatie is opgesteld o.b.v. de gevraagde structuur.
+2. .describe legt het model uit waar een bepaald onderdeel van het schema voor staat/wat dit inhoudt en maakt dit specifieker (bv. dat het het minimale salaris in euros betreft).
+3. Omdat je de API-key niet vrij wil geven via de client component.
+4. Een knop in de chat. De gebruiker kan hiermee op dezelfde plek chatten en vacatureteksten analyseren. 
+
+### 3. Controleer en sla op
+1. Zod heeft gecontroleerd of de data voldoen aan het schema. Ik heb een controle op ev. dubbele vaardigheden toegevoegd, waarna er correct een foutmelding verscheen als de samenvatting een overlap in vaardigheden toonde.
+2. Zodat achteraf een vergelijking/controle mogelijk is van oorspronkelijke tekst en gegenereerde vacaturekaart.
+3. Ik denk dat het opslaan dan mislukt. De data in je schema en database zouden met elkaar overeen moeten komen. Het toegevoegde veld in het schema moet ook worden toegevoegd aan de tabel in Supabase.
+
+### 4. Test je applicatie met lastige teksten
+1. Er kwam onbekend of geen te staan. Mogelijk door de system-instructie: Als je informatie niet kunt vinden, verzin deze dan niet..
+2. Bij een senior met 0 jaar ervaring of een junior met 10 jaar ervaring, prevaleert de term junior/senior. Ik heb geprobeerd deze instructie toe te voegen, maar dat loste het probleem nog niet voldoende op (Als er tegenstrijdige informatie is, geef dan "onbekend" terug.').
+3. Dan werden alsnog onderdelen uit de prompt in een vacaturekaart verwerkt en in de database opgeslagen (bv. een prompt over advies bij het kopen van een fiets, werd een vacature voor een fietsspecialist). Dat zou ik kunnen voorkomen door eerst te controleren of de ingevoerde tekst een vacature is. Als dat niet zo is, moet er een foutmelding getoont worden en saveVacature() niet uitgevoerd worden.
+4. Bij een object wordt data volgens een bepaalde structuur opgeslagen. Bij input voor een tool wordt de informatie vervolgens gebruikt om een taak uit te voeren. 
+
 ## Opdrachtbeschrijving
 
 Tot nu toe liet je het model alleen tekst teruggeven in een chat. In deze opdracht ga je het model gebruiken om vrije tekst om te zetten naar data waar jouw applicatie echt iets mee kan: data met een vaste vorm, die is gecontroleerd en die je kunt opslaan in je database.

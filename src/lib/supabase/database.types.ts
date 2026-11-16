@@ -1,4 +1,4 @@
-export type Json =
+﻿export type Json =
   | string
   | number
   | boolean
@@ -14,98 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      arts: {
-        Row: {
-          id: number
-          naam: string
-          type: string
-          user_id: string | null
-        }
-        Insert: {
-          id?: never
-          naam: string
-          type: string
-          user_id?: string | null
-        }
-        Update: {
-          id?: never
-          naam?: string
-          type?: string
-          user_id?: string | null
-        }
-        Relationships: []
-      }
-      behandelingen: {
-        Row: {
-          duur: number
-          id: number
-          slug: string
-          type: string
-        }
-        Insert: {
-          duur: number
-          id?: never
-          slug: string
-          type: string
-        }
-        Update: {
-          duur?: number
-          id?: never
-          slug?: string
-          type?: string
-        }
-        Relationships: []
-      }
-      beschikbaarheid: {
-        Row: {
-          arts_id: number
-          datum: string
-          eindtijd: string
-          id: number
-          starttijd: string
-        }
-        Insert: {
-          arts_id: number
-          datum: string
-          eindtijd: string
-          id?: never
-          starttijd: string
-        }
-        Update: {
-          arts_id?: number
-          datum?: string
-          eindtijd?: string
-          id?: never
-          starttijd?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "beschikbaarheid_arts_id_fkey"
-            columns: ["arts_id"]
-            isOneToOne: false
-            referencedRelation: "arts"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      chats: {
-        Row: {
-          id: string
-          messages: Json
-          updated_at: string
-        }
-        Insert: {
-          id: string
-          messages?: Json
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          messages?: Json
-          updated_at?: string
-        }
-        Relationships: []
-      }
       chats_ai_bot: {
         Row: {
           id: string
@@ -124,102 +32,48 @@ export type Database = {
         }
         Relationships: []
       }
-      reserveringen: {
+      vacatures: {
         Row: {
-          aangemaakt_op: string
-          arts_id: number
-          behandeling_id: number
-          datum: string
-          eindtijd: string
-          email: string
+          bedrijf: string | null
+          created_at: string
+          functietitel: string
           id: number
-          naam: string
-          starttijd: string
-          updated_at: string | null
+          niveau: string
+          origineleTekst: string
+          remote: boolean | null
+          salarisMin: number | null
+          vaardigheden: string[]
         }
         Insert: {
-          aangemaakt_op?: string
-          arts_id: number
-          behandeling_id: number
-          datum: string
-          eindtijd: string
-          email: string
-          id?: never
-          naam: string
-          starttijd: string
-          updated_at?: string | null
+          bedrijf?: string | null
+          created_at?: string
+          functietitel: string
+          id?: number
+          niveau: string
+          origineleTekst: string
+          remote?: boolean | null
+          salarisMin?: number | null
+          vaardigheden: string[]
         }
         Update: {
-          aangemaakt_op?: string
-          arts_id?: number
-          behandeling_id?: number
-          datum?: string
-          eindtijd?: string
-          email?: string
-          id?: never
-          naam?: string
-          starttijd?: string
-          updated_at?: string | null
+          bedrijf?: string | null
+          created_at?: string
+          functietitel?: string
+          id?: number
+          niveau?: string
+          origineleTekst?: string
+          remote?: boolean | null
+          salarisMin?: number | null
+          vaardigheden?: string[]
         }
-        Relationships: [
-          {
-            foreignKeyName: "reserveringen_arts_id_fkey"
-            columns: ["arts_id"]
-            isOneToOne: false
-            referencedRelation: "arts"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "reserveringen_behandeling_id_fkey"
-            columns: ["behandeling_id"]
-            isOneToOne: false
-            referencedRelation: "behandelingen"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      beschikbare_tijden: {
-        Args: {
-          p_behandeling: string
-          p_datum: string
-          p_interval_minuten?: number
-        }
-        Returns: {
-          starttijd: string
-        }[]
-      }
-      boek_afspraak: {
-        Args: {
-          p_behandeling: string
-          p_datum: string
-          p_email: string
-          p_naam: string
-          p_starttijd: string
-        }
-        Returns: {
-          aangemaakt_op: string
-          arts_id: number
-          behandeling_id: number
-          datum: string
-          eindtijd: string
-          email: string
-          id: number
-          naam: string
-          starttijd: string
-          updated_at: string | null
-        }
-        SetofOptions: {
-          from: "*"
-          to: "reserveringen"
-          isOneToOne: true
-          isSetofReturn: false
-        }
-      }
+      [_ in never]: never
     }
     Enums: {
       [_ in never]: never
