@@ -9,7 +9,12 @@
 1. Omdat je de tekst pas wil weergeven als alle informatie is doorlopen en de juiste informatie is opgesteld o.b.v. de gevraagde structuur.
 2. .describe legt het model uit waar een bepaald onderdeel van het schema voor staat/wat dit inhoudt en maakt dit specifieker (bv. dat het het minimale salaris in euros betreft).
 3. Omdat je de API-key niet vrij wil geven via de client component.
-4. Een knop in de chat. De gebruiker kan hiermee op dezelfde plek chatten en vacatureteksten analyseren (en ik hoef geen tweede pagina te bouwen). 
+4. Een knop in de chat. De gebruiker kan hiermee op dezelfde plek chatten en vacatureteksten analyseren. 
+
+### 3. Controleer en sla op
+1. Zod heeft gecontroleerd of de data voldoen aan het schema. Ik heb een controle op ev. dubbele vaardigheden toegevoegd, waarna er correct een foutmelding verscheen als de samenvatting een overlap in vaardigheden toonde.
+2. Zodat achteraf een vergelijking/controle mogelijk is van oorspronkelijke tekst en gegenereerde vacaturekaart.
+3. Ik denk dat het opslaan dan mislukt. De data in je schema en database zouden met elkaar overeen moeten komen. Het toegevoegde veld in het schema moet ook worden toegevoegd aan de tabel in Supabase.
 
 ## Opdrachtbeschrijving
 
