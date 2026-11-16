@@ -16,6 +16,12 @@
 2. Zodat achteraf een vergelijking/controle mogelijk is van oorspronkelijke tekst en gegenereerde vacaturekaart.
 3. Ik denk dat het opslaan dan mislukt. De data in je schema en database zouden met elkaar overeen moeten komen. Het toegevoegde veld in het schema moet ook worden toegevoegd aan de tabel in Supabase.
 
+### 4. Test je applicatie met lastige teksten
+1. Er kwam onbekend of geen te staan. Mogelijk door de system-instructie: Als je informatie niet kunt vinden, verzin deze dan niet..
+2. Bij een senior met 0 jaar ervaring of een junior met 10 jaar ervaring, prevaleert de term junior/senior. Ik heb geprobeerd deze instructie toe te voegen, maar dat loste het probleem nog niet voldoende op (Als er tegenstrijdige informatie is, geef dan "onbekend" terug.').
+3. Dan werden alsnog onderdelen uit de prompt in een vacaturekaart verwerkt en in de database opgeslagen (bv. een prompt over advies bij het kopen van een fiets, werd een vacature voor een fietsspecialist). Dat zou ik kunnen voorkomen door eerst te controleren of de ingevoerde tekst een vacature is. Als dat niet zo is, moet er een foutmelding getoont worden en saveVacature() niet uitgevoerd worden.
+4. Bij een object wordt data volgens een bepaalde structuur opgeslagen. Bij input voor een tool wordt de informatie vervolgens gebruikt om een taak uit te voeren. 
+
 ## Opdrachtbeschrijving
 
 Tot nu toe liet je het model alleen tekst teruggeven in een chat. In deze opdracht ga je het model gebruiken om vrije tekst om te zetten naar data waar jouw applicatie echt iets mee kan: data met een vaste vorm, die is gecontroleerd en die je kunt opslaan in je database.
