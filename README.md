@@ -1,3 +1,10 @@
+## Antwoorden op de vragen
+### 1. Kies je onderwerp en ontwerp je schema
+1. Omdat een geldige JSON niet per se hoeft te voldoen aan de structuur die de applicatie verwacht.
+2. TypeScript controleert tijdens het schrijven van de code, Zod controleert als de applicatie draait en er data binnenkomt. 
+3. Ik heb diverse schema's op nullable gezet, omdat ik denk dat het beter is om toe te staan dat een waarde null mag worden, dan dat er verplicht een betekenisvolle waarde ingevuld moet worden. De kans is dan groter dat de AI gaat hallucineren en een niet kloppende waarde invult.
+4. Zodat er geforceerd wordt dat het ervaringsniveau op soortgelijke manier gecategoriseerd wordt. Dit is bv. behulpzaam als je gebruikers vacatures wilt laten filteren op ervaringsniveau. Met z.string() zou je bv. ook afwijkende waarden kunnen krijgen zoals "beginner". 
+
 ## Opdrachtbeschrijving
 
 Tot nu toe liet je het model alleen tekst teruggeven in een chat. In deze opdracht ga je het model gebruiken om vrije tekst om te zetten naar data waar jouw applicatie echt iets mee kan: data met een vaste vorm, die is gecontroleerd en die je kunt opslaan in je database.
